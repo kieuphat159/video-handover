@@ -1,0 +1,83 @@
+diff --git a/evaluation/run_benchmark.py b/evaluation/run_benchmark.py
+index 1399485..f012e70 100644
+--- a/evaluation/run_benchmark.py
++++ b/evaluation/run_benchmark.py
+@@ -51,10 +51,10 @@ def load_benchmark(path: str, subsets, limit) -> tuple:
+     plain wavs so backends still get file paths)."""
+     p = Path(path)
+     if p.is_dir() and (p / "metadata.jsonl").exists():
+-        rows = [json.loads(x) for x in (p / "metadata.jsonl").read_text().splitlines() if x.strip()]
++        rows = [json.loads(x) for x in (p / "metadata.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]
+         root = p
+     elif p.suffix == ".jsonl" and p.exists():
+-        rows = [json.loads(x) for x in p.read_text().splitlines() if x.strip()]
++        rows = [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()]
+         root = p.parent
+     else:
+         rows, root = _load_from_hub(path, subsets)
+diff --git a/src/zerotts/codec.py b/src/zerotts/codec.py
+index d9ec3c6..5c16376 100644
+--- a/src/zerotts/codec.py
++++ b/src/zerotts/codec.py
+@@ -51,7 +51,7 @@ class MossCodecDecoder:
+             raise FileNotFoundError(
+                 f"{codec_dir} has no codec_browser_onnx_meta.json — the vendored "
+                 f"codec is missing from this model directory.")
+-        meta = json.loads(meta_path.read_text())
++        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+         self._meta = meta
+ 
+         cfg = meta["codec_config"]
+diff --git a/src/zerotts/hub.py b/src/zerotts/hub.py
+index 7475bc5..99cd275 100644
+--- a/src/zerotts/hub.py
++++ b/src/zerotts/hub.py
+@@ -116,4 +116,4 @@ def load_config(model_dir: str | Path) -> dict:
+             f"predate the published layout (graphs under onnx/, text_encoder.onnx "
+             f"formerly named char_embed.onnx).")
+ 
+-    return json.loads(config_path.read_text())
++    return json.loads(config_path.read_text(encoding="utf-8"))
+diff --git a/src/zerotts/synthesizer.py b/src/zerotts/synthesizer.py
+index 68a7e06..eab4045 100644
+--- a/src/zerotts/synthesizer.py
++++ b/src/zerotts/synthesizer.py
+@@ -37,6 +37,7 @@ sampled frame.
+ 
+ from __future__ import annotations
+ 
++import random
+ import shutil
+ import time
+ from pathlib import Path
+@@ -365,8 +366,8 @@ class ZeroTTS:
+                 "audio_repetition_penalty": np.array(
+                     [audio_repetition_penalty], dtype=np.float32),
+                 "seen_mask": seen_mask,
+-                "ctrl_random_u": np.random.random(1).astype(np.float32),
+-                "audio_random_u": np.random.random((1, K)).astype(np.float32),
++                "ctrl_random_u": np.array([random.random()], dtype=np.float32),
++                "audio_random_u": np.array([[random.random() for _ in range(K)]], dtype=np.float32),
+                 "cfg_scale": np.array([cfg_scale], dtype=np.float32),
+             },
+         )
+diff --git a/src/zerotts/voices.py b/src/zerotts/voices.py
+index 46abdc3..193dee6 100644
+--- a/src/zerotts/voices.py
++++ b/src/zerotts/voices.py
+@@ -244,7 +244,7 @@ def load_voice_dir(vdir: str | Path, name: str | None = None,
+             f"model uses {expect_queries}. It belongs to different weights.")
+ 
+     meta_path = vdir / "meta.json"
+-    meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
++    meta = json.loads(meta_path.read_text(encoding="utf-8")) if meta_path.exists() else {}
+     preview = vdir / "preview.wav"
+     return Voice(name=name, emb=emb, meta=meta,
+                  preview_path=str(preview) if preview.exists() else None)
+@@ -255,5 +255,5 @@ def load_index(voices_root: str | Path) -> dict:
+     root = Path(voices_root)
+     index_path = root / "index.json"
+     if index_path.exists():
+-        return json.loads(index_path.read_text())
++        return json.loads(index_path.read_text(encoding="utf-8"))
+     return {"voices": [{"name": n} for n in list_voices(root)]}

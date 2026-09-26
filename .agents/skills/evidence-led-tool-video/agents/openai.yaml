@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence-led Tool Video"
+  short_description: "Video repo có bằng chứng, nhịp đọc tự nhiên"
+  default_prompt: "Use $evidence-led-tool-video to create a Vietnamese repo explainer with authentic screenshots and natural sentence pacing."

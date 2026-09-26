@@ -1,0 +1,31 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+# Render logs from cloud-render.sh
+renders/
+
+# Temporary and scratch working directories
+temp_*
+.tmp/
+tmp/
+scratch/
+scratch_arxiv/
+scratch_*
+
+# ZeroTTS runtime environment
+ZeroTTS/.venv/
+
+# Root temporary files
+/*.mp3
+/*.pdf
+/*.png
+/*.webp
+
+# ZeroTTS is vendored (see README); keep its generated audio and caches out of git
+ZeroTTS/**/__pycache__/
+ZeroTTS/*.wav

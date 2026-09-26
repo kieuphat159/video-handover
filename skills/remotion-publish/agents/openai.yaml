@@ -1,0 +1,6 @@
+interface:
+  display_name: "Remotion Social Publish"
+  short_description: "Render and publish verified vertical videos"
+  default_prompt: "Use $remotion-publish to create and publish a verified TikTok and YouTube Short end to end."
+policy:
+  allow_implicit_invocation: true
