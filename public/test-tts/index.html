@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bộ Sưu Tập Giọng Đọc TTS Song Ngữ Việt + Anh (Bilingual Showcase)</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-hover: #1f2937;
+      --border: #374151;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --cyan: #06b6d4;
+      --green: #10b981;
+      --purple: #8b5cf6;
+      --blue: #3b82f6;
+      --amber: #f59e0b;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 36px 20px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .quote-box {
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--cyan);
+      padding: 18px 22px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .quote-box .label {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+
+    .quote-box .text {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+
+    .quote-box .terms {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .term-pill {
+      font-family: monospace;
+      font-size: 12px;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: #22d3ee;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 36px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--cyan);
+      background: var(--card-hover);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .card-highlight {
+      border: 2px solid var(--green) !important;
+      background: #0f1f17 !important;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-green { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+    .badge-cyan { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border: 1px solid #06b6d4; }
+    .badge-purple { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border: 1px solid #8b5cf6; }
+    .badge-amber { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
+    .badge-blue { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
+
+    .desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .params {
+      font-family: monospace;
+      font-size: 12px;
+      color: #a5f3fc;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: inline-block;
+      width: fit-content;
+    }
+
+    audio {
+      width: 100%;
+      outline: none;
+      height: 38px;
+      border-radius: 20px;
+    }
+
+    .instructions-box {
+      margin-top: 40px;
+      background: #1e1b4b;
+      border: 1px solid #4338ca;
+      border-radius: 14px;
+      padding: 20px 24px;
+    }
+
+    .instructions-box h3 {
+      margin-top: 0;
+      color: #c7d2fe;
+      font-size: 17px;
+    }
+
+    .instructions-box code {
+      background: rgba(0,0,0,0.4);
+      color: #a5f3fc;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎧 Thử Nghiệm Giọng Đọc TTS Song Ngữ (Việt + Anh)</h1>
+  <div class="subtitle">Đánh giá khả năng xử lý thuật ngữ kỹ thuật tiếng Anh liền mạch trong câu tiếng Việt, tối ưu cho video ngắn 60s.</div>
+
+  <div class="quote-box">
+    <div class="label">Đoạn Văn Bản Mẫu Thử Nghiệm</div>
+    <div class="text">"harness cho agent này rất ngon, có thể cắm nhiều model vào pool. Ruflo biến Claude Code thành swarm 100 AI tự hành!"</div>
+    <div class="terms">
+      <span class="term-pill">harness</span>
+      <span class="term-pill">agent</span>
+      <span class="term-pill">model</span>
+      <span class="term-pill">pool</span>
+      <span class="term-pill">Ruflo</span>
+      <span class="term-pill">Claude Code</span>
+      <span class="term-pill">swarm</span>
+      <span class="term-pill">AI</span>
+    </div>
+    <div class="params" style="margin-top: 14px;">Demo mới: Edge segmented miễn phí · Emma Multilingual · Việt/Anh ép locale · Rate +40% · Crossfade 35ms</div>
+    <audio controls preload="metadata" src="edge-segmented-html-testcase.mp3"></audio>
+  </div>
+
+  <!-- KHU VỰC ĐẶC BIỆT: CÁC PHƯƠNG ÁN ĐỘT PHÁ KẾT HỢP ƯU ĐIỂM EDGE + BILINGUAL -->
+  <div style="background: linear-gradient(135deg, #1e1b4b, #0f172a); border: 2px solid #6366f1; border-radius: 16px; padding: 24px; margin-bottom: 36px; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);">
+    <div style="font-size: 20px; font-weight: 900; color: #a5b4fc; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+      <span>💡</span> BẬT MÍ: 3 PHƯƠNG ÁN KẾT HỢP "GIỌNG ẤM EDGE" + "TIẾNG ANH CHUẨN" (ZERO QUOTA)
+    </div>
+    <div style="color: #cbd5e1; font-size: 14px; margin-bottom: 20px;">
+      Giải bài toán: Giữ nguyên chất giọng truyền cảm, ấm áp của MS Edge nhưng đọc từ mượn tiếng Anh mượt mà như Google / ElevenLabs mà không tốn phí quota!
+    </div>
+
+    <!-- Solution 1: Edge Nam Minh + Phonetics -->
+    <div class="card" style="border-color: #10b981; background: rgba(16, 185, 129, 0.05); margin-bottom: 16px;">
+      <div class="card-header">
+        <span class="card-title" style="color: #34d399;">🔥 Phương án 1: Edge Nam Minh + Bộ Phiên Âm Tiếng Việt Tự Nhiên</span>
+        <span class="badge badge-green">KHUYÊN DÙNG SỐ 1 • 0đ</span>
+      </div>
+      <div class="desc">
+        Giữ trọn chất giọng Hà Nội trầm ấm của <b>Nam Minh</b>. Thuật ngữ tiếng Anh được tự động chuyển thành phiên âm tự nhiên như các reviewer kênh công nghệ triệu view (Vật Vờ, Duy Thẩm): <i>hát-nịt, ây-dừn, mo-đồ, pun, C-loóc Cốt, xoa-m</i>. Hoàn toàn tự nhiên, không ngượng, 100% miễn phí vĩnh viễn!
+      </div>
+      <div class="params">Voice: vi-VN-NamMinhNeural, Smart Dev Phonetics Engine, Volume: x1.6</div>
+      <audio controls src="test-edge-namminh-phien-am.mp3"></audio>
+    </div>
+
+    <!-- Solution 1B: Edge Hoài My + Phonetics -->
+    <div class="card" style="border-color: #ec4899; background: rgba(236, 72, 153, 0.05); margin-bottom: 16px;">
+      <div class="card-header">
+        <span class="card-title" style="color: #f472b6;">🌸 Phương án 1B: Edge Hoài My + Bộ Phiên Âm Tiếng Việt Tự Nhiên</span>
+        <span class="badge badge-purple">NỮ ẤM TRUYỀN CẢM • 0đ</span>
+      </div>
+      <div class="desc">
+        Giọng nữ phát thanh viên <b>Hoài My</b> dịu dàng, tròn vành rõ chữ kết hợp bộ phiên âm công nghệ. Nghe cực kỳ thân thiện, giữ chân người xem video ngắn rất tốt.
+      </div>
+      <div class="params">Voice: vi-VN-HoaiMyNeural, Smart Dev Phonetics Engine, Volume: x1.6</div>
+      <audio controls src="test-edge-hoaimy-phien-am.mp3"></audio>
+    </div>
+
+    <!-- Solution 2: Edge Andrew Multilingual -->
+    <div class="card" style="border-color: #38bdf8; background: rgba(56, 189, 248, 0.05); margin-bottom: 16px;">
+      <div class="card-header">
+        <span class="card-title" style="color: #38bdf8;">🌐 Phương án 2: Edge Andrew Multilingual (Phong cách Việt Kiều Mỹ)</span>
+        <span class="badge badge-blue">SONG NGỮ NATIVE • 0đ</span>
+      </div>
+      <div class="desc">
+        Giọng AI thế hệ mới của Microsoft: Từ tiếng Anh phát âm chuẩn 100% ngữ điệu bản xứ Mỹ, tiếng Việt mang âm sắc hiện đại, sang chảnh kiểu kỹ sư Việt làm việc tại Silicon Valley.
+      </div>
+      <div class="params">Voice: en-US-AndrewMultilingualNeural, Rate: +25%, Volume: x1.6</div>
+      <audio controls src="test-edge-andrew-multilingual.mp3"></audio>
+    </div>
+
+    <!-- Solution 2B: Edge Ava Multilingual -->
+    <div class="card" style="border-color: #a78bfa; background: rgba(167, 139, 250, 0.05); margin-bottom: 16px;">
+      <div class="card-header">
+        <span class="card-title" style="color: #c084fc;">✨ Phương án 2B: Edge Ava Multilingual (Nữ Trợ Lý AI Đa Ngôn Ngữ)</span>
+        <span class="badge badge-purple">SONG NGỮ NATIVE • 0đ</span>
+      </div>
+      <div class="desc">
+        Giọng nữ đa ngôn ngữ của Microsoft: tiếng Anh đọc hoàn hảo, tiếng Việt thanh thoát, hiện đại.
+      </div>
+      <div class="params">Voice: en-US-AvaMultilingualNeural, Rate: +25%, Volume: x1.6</div>
+      <audio controls src="test-edge-ava-multilingual.mp3"></audio>
+    </div>
+
+    <!-- Solution 3: OpenAI TTS Info -->
+    <div class="card" style="border-color: #f59e0b; background: rgba(245, 158, 11, 0.05);">
+      <div class="card-header">
+        <span class="card-title" style="color: #fbbf24;">⚡ Phương án 3: OpenAI TTS-1 (Alloy / Onyx) — Siêu Rẻ ~150đ/video</span>
+        <span class="badge badge-amber">CHẤT LƯỢNG NGANG ELEVENLABS</span>
+      </div>
+      <div class="desc">
+        Nếu bạn có OpenAI API Key: Model <code>tts-1</code> phát âm tiếng Việt ấm áp, tự nhiên như người thật và chuyển từ tiếng Anh chuẩn Mỹ 100%. Giá chỉ <b>$0.015 / 1.000 ký tự</b> (khoảng <b>150 VNĐ một video 60s</b>). Với 25.000đ (1 USD) làm được ~160 video, không lo cạn quota như ElevenLabs!
+      </div>
+    </div>
+  </div>
+
+  <!-- NHÓM 1: GOOGLE TTS ENGINE -->
+  <div class="section-title" style="color: var(--cyan);">
+    <span>🚀</span> NHÓM 1: GOOGLE TTS (MIỄN PHÍ 100%, KHÔNG GIỚI HẠN, BILINGUAL CỰC CHUẨN)
+  </div>
+
+  <!-- G4: Chốt hiện tại -->
+  <div class="card card-highlight">
+    <div class="card-header">
+      <span class="card-title">⭐ Option G4: Nữ Trẻ Năng Động (Chuẩn Mặc Định Đang Dùng)</span>
+      <span class="badge badge-green">CHỐT MẶC ĐỊNH</span>
+    </div>
+    <div class="desc">
+      Tông nữ trẻ trung, nhiệt huyết, phát âm từ tiếng Anh cực kỳ tự nhiên không hề ngắc ngứ. Tốc độ nói x1.5 kết hợp âm lượng x1.6 (+60% gain) giúp giọng nổi bật trên loa điện thoại.
+    </div>
+    <div class="params">asetrate=24000*1.06,aresample=24000,atempo=1.415,volume=1.6 (Pitch +6%, Speed x1.5, Volume x1.6)</div>
+    <audio controls src="g4-nu-tre-nang-dong-1.6.mp3"></audio>
+  </div>
+
+  <!-- G5: Nam Trẻ Tech -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option G5: Nam Trẻ Công Nghệ (Tech Reviewer)</span>
+      <span class="badge badge-cyan">MỚI • GIỌNG NAM</span>
+    </div>
+    <div class="desc">
+      Hạ nhẹ tông để biến thành giọng nam thanh niên hiện đại, dứt khoát, phong cách reviewer kênh công nghệ trẻ trung, đọc thuật ngữ kỹ thuật trôi chảy.
+    </div>
+    <div class="params">asetrate=24000*0.92,aresample=24000,atempo=1.58,volume=1.6 (Pitch -7%, Speed x1.5, Volume x1.6)</div>
+    <audio controls src="g5-nam-tre-tech-1.6.mp3"></audio>
+  </div>
+
+  <!-- G6: Nam Trầm Uy Tín -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option G6: Nam Trầm Uy Tín (Senior Architect)</span>
+      <span class="badge badge-cyan">MỚI • GIỌNG NAM TRẦM</span>
+    </div>
+    <div class="desc">
+      Hạ tông sâu hơn, tạo cảm giác đĩnh đạc, chuyên gia kiến trúc phần mềm kỳ cựu, uy tín và nghiêm túc. Rất hợp các video phân tích sâu hoặc benchmark.
+    </div>
+    <div class="params">asetrate=24000*0.84,aresample=24000,atempo=1.65,volume=1.6 (Pitch -16%, Speed x1.4, Volume x1.6)</div>
+    <audio controls src="g6-nam-tram-uy-tin-1.6.mp3"></audio>
+  </div>
+
+  <!-- G7: Nữ MC Bản Tin -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option G7: Nữ MC Bản Tin Công Nghệ (Tech Anchor)</span>
+      <span class="badge badge-cyan">MỚI • GIỌNG NỮ MC</span>
+    </div>
+    <div class="desc">
+      Giữ tông gốc tự nhiên của Google, tăng tốc độ nói vừa phải và đẩy độ trong sáng. Phù hợp các video cập nhật tin tức công nghệ hằng ngày, dễ chịu, thanh lịch.
+    </div>
+    <div class="params">asetrate=24000*1.02,aresample=24000,atempo=1.46,volume=1.6 (Pitch +2%, Speed x1.5, Volume x1.6)</div>
+    <audio controls src="g7-nu-mc-ban-tin-1.6.mp3"></audio>
+  </div>
+
+  <!-- G8: Turbo Shorts -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option G8: Turbo Shorts Siêu Tốc (High Retention)</span>
+      <span class="badge badge-amber">MỚI • SIÊU TỐC</span>
+    </div>
+    <div class="desc">
+      Đẩy nhịp độ lên x1.65 cực nhanh và cuốn hút, dồn dập, tăng tối đa lượng kiến thức truyền tải trong các video 30–45s hoặc các đoạn hook đầu video.
+    </div>
+    <div class="params">asetrate=24000*1.04,aresample=24000,atempo=1.586,volume=1.65 (Pitch +4%, Speed x1.65, Volume x1.65)</div>
+    <audio controls src="g8-turbo-shorts-1.6.mp3"></audio>
+  </div>
+
+  <!-- NHÓM 2: MICROSOFT EDGE MULTILINGUAL NEURAL -->
+  <div class="section-title" style="color: var(--blue);">
+    <span>🌐</span> NHÓM 2: MICROSOFT EDGE NEURAL (MIỄN PHÍ, NEURAL AI TỰ NHIÊN)
+  </div>
+
+  <!-- M1: Ava -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option M1: Ava Multilingual (Nữ Mỹ Đa Ngôn Ngữ)</span>
+      <span class="badge badge-blue">EDGE NEURAL</span>
+    </div>
+    <div class="desc">
+      Giọng nữ đa ngôn ngữ của Microsoft: phát âm tiếng Anh chuẩn ngữ điệu Mỹ, phát âm tiếng Việt mềm mại, phong cách trợ lý AI hiện đại.
+    </div>
+    <div class="params">Voice: en-US-AvaMultilingualNeural, Rate: +25%, Volume: x1.5</div>
+    <audio controls src="m1-edge-ava.mp3"></audio>
+  </div>
+
+  <!-- M2: Andrew -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option M2: Andrew Multilingual (Nam Mỹ Đa Ngôn Ngữ)</span>
+      <span class="badge badge-blue">EDGE NEURAL</span>
+    </div>
+    <div class="desc">
+      Giọng nam đa ngôn ngữ: từ tiếng Anh được đọc cực chuẩn, tiếng Việt mang âm sắc hơi lơ lớ kiểu chuyên gia Việt kiều Mỹ, rất đặc trưng cho dev quốc tế.
+    </div>
+    <div class="params">Voice: en-US-AndrewMultilingualNeural, Rate: +25%, Volume: x1.5</div>
+    <audio controls src="m2-edge-andrew.mp3"></audio>
+  </div>
+
+  <!-- M3: Brian -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option M3: Brian Multilingual (Nam Trầm Đa Ngôn Ngữ)</span>
+      <span class="badge badge-blue">EDGE NEURAL</span>
+    </div>
+    <div class="desc">
+      Tông nam trầm ấm, phát âm tiếng Anh đĩnh đạc và rành mạch.
+    </div>
+    <div class="params">Voice: en-US-BrianMultilingualNeural, Rate: +25%, Volume: x1.5</div>
+    <audio controls src="m3-edge-brian.mp3"></audio>
+  </div>
+
+  <!-- M5: Nam Minh Chuẩn Hà Nội -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option M5: Nam Minh (Nam Chuẩn Hà Nội)</span>
+      <span class="badge badge-blue">EDGE TIẾNG VIỆT GỐC</span>
+    </div>
+    <div class="desc">
+      Giọng nam tiếng Việt tự nhiên nhất hiện nay của Microsoft Edge TTS, chất giọng Hà Nội chuẩn. (Lưu ý: các từ tiếng Anh đọc theo kiểu Việt hóa).
+    </div>
+    <div class="params">Voice: vi-VN-NamMinhNeural, Rate: +25%, Volume: x1.6</div>
+    <audio controls src="m5-edge-namminh-1.6.mp3"></audio>
+  </div>
+
+  <!-- M6: Hoài My Chuẩn Hà Nội -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option M6: Hoài My (Nữ Chuẩn Hà Nội)</span>
+      <span class="badge badge-blue">EDGE TIẾNG VIỆT GỐC</span>
+    </div>
+    <div class="desc">
+      Giọng nữ phát thanh viên miền Bắc chuẩn, tròn vành rõ chữ, nhẹ nhàng và truyền cảm.
+    </div>
+    <div class="params">Voice: vi-VN-HoaiMyNeural, Rate: +25%, Volume: x1.6</div>
+    <audio controls src="m6-edge-hoaimy-1.6.mp3"></audio>
+  </div>
+
+  <!-- NHÓM 3: ELEVENLABS MULTILINGUAL V2 -->
+  <div class="section-title" style="color: var(--purple);">
+    <span>💎</span> NHÓM 3: ELEVENLABS MULTILINGUAL V2 (SIÊU THỰC NHƯ NGƯỜI THẬT - CẦN API QUOTA)
+  </div>
+
+  <!-- E1: Liam Demo -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option E1: Liam (Nam Trẻ Tech Founder)</span>
+      <span class="badge badge-purple">ELEVENLABS DEMO</span>
+    </div>
+    <div class="desc">
+      Mẫu demo từ video Omarchy thực tế: Giọng nam số 1 thế giới về công nghệ, thở nhịp và biểu cảm như người thật 100%, song ngữ Việt - Anh đỉnh cao.
+    </div>
+    <div class="params">Model: eleven_multilingual_v2, Voice: TX3LPaxmHKxFdv7VOQHJ (Liam), Speed: 1.15</div>
+    <audio controls src="elevenlabs-liam-demo.mp3"></audio>
+  </div>
+
+  <!-- E2: Adam Demo -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Option E2: Adam (Nam Trầm Quyền Lực)</span>
+      <span class="badge badge-purple">ELEVENLABS DEMO</span>
+    </div>
+    <div class="desc">
+      Mẫu demo từ video Humanizer thực tế: Tông nam trầm ấm, giọng phát biểu CEO / Kiến trúc sư trưởng uy quyền.
+    </div>
+    <div class="params">Model: eleven_multilingual_v2, Voice: pNInz6obpgDQGcFmaJgB (Adam), Speed: 1.10</div>
+    <audio controls src="elevenlabs-adam-demo.mp3"></audio>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="instructions-box">
+    <h3>⚙️ Cách Chọn và Đổi Giọng Cho Bất Kỳ Video Nào</h3>
+    <p>Nếu bạn thích một trong các giọng trên cho video tiếp theo:</p>
+    <ul>
+      <li><b>Chọn dòng Google TTS (G4, G5, G6, G7, G8)</b>: Chỉ cần báo tên option (ví dụ: <i>"làm video tiếp theo bằng giọng G5 Nam Trẻ Tech"</i>), hệ thống sẽ nạp preset tương ứng vào <code>generate-voiceover.ts</code> hoàn toàn tự động!</li>
+      <li><b>Chọn dòng Edge Multilingual (M1, M2, M3, M5, M6)</b>: Chạy flag <code>--engine=edge</code> kèm tên giọng.</li>
+      <li><b>Chọn dòng ElevenLabs (E1, E2)</b>: Chạy flag <code>--engine=elevenlabs</code> (khi tài khoản có quota credits).</li>
+    </ul>
+  </div>
+
+</body>
+</html>
