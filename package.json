@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Remotion vertical short-video pipeline (ZeroTTS + Buffer)",
   "repository": {},
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "dependencies": {

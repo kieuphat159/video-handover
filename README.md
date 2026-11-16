@@ -58,3 +58,7 @@ node --strip-types --env-file=.env scripts/verify-buffer-posts.ts <post-id> [pos
 ```
 
 Use single quotes around captions so `$` and other shell characters are not expanded. A run is complete only when every post reports `sent` with an `externalLink`; if one platform fails, retry only that platform (`tiktok`, `youtube` or `facebook`).
+
+## License
+
+Code in this repository is released under the [MIT License](LICENSE). Third-party parts keep their own licenses: ZeroTTS (MIT, ZeroWeight AI), Be Vietnam Pro fonts (SIL OFL 1.1) and Remotion (Remotion License — free for individuals and small companies, larger companies need a company license; see https://www.remotion.dev/license). Example screenshots under `public/videos/paperclip/assets/` belong to their owners.
