@@ -19,16 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
--------------------------------------------------------------------------------
-Third-party components (not covered by the MIT license above)
-
-- ZeroTTS/ : vendored from https://github.com/zeroweight-ai/ZeroTTS,
-  MIT License, Copyright (c) 2026 ZeroWeight AI. See ZeroTTS/LICENSE,
-  ZeroTTS/NOTICE and ZeroTTS/LICENSES/.
-- public/fonts/BeVietnamPro-*.ttf : Be Vietnam Pro, SIL Open Font License 1.1.
-- Remotion (npm dependency) : Remotion License, not MIT. Free for individuals
-  and small companies; larger companies need a Remotion company license.
-  See https://www.remotion.dev/license.
-- public/videos/paperclip/assets/* : screenshots of a third-party project used
-  as an example; they belong to their respective owners.

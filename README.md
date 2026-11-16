@@ -61,4 +61,4 @@ Use single quotes around captions so `$` and other shell characters are not expa
 
 ## License
 
-Code in this repository is released under the [MIT License](LICENSE). Third-party parts keep their own licenses: ZeroTTS (MIT, ZeroWeight AI), Be Vietnam Pro fonts (SIL OFL 1.1) and Remotion (Remotion License — free for individuals and small companies, larger companies need a company license; see https://www.remotion.dev/license). Example screenshots under `public/videos/paperclip/assets/` belong to their owners.
+Code in this repository is released under the [MIT License](LICENSE). Third-party parts keep their own licenses: ZeroTTS (MIT, ZeroWeight AI), Be Vietnam Pro fonts (SIL OFL 1.1) and Remotion (Remotion License — free for individuals and small companies, larger companies need a company license; see https://www.remotion.dev/license). Example screenshots under `public/videos/paperclip/assets/` belong to their owners. Details: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
